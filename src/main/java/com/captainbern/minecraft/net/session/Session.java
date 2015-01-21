@@ -1,10 +1,13 @@
 package com.captainbern.minecraft.net.session;
 
+import com.captainbern.minecraft.net.ConnectionHandler;
 import com.captainbern.minecraft.net.packet.Packet;
 import com.captainbern.minecraft.net.protocol.Protocol;
 import io.netty.channel.Channel;
 
 public interface Session {
+
+    public ConnectionHandler getConnectionHandler();
 
     public void packetReceived(Packet packet);
 
