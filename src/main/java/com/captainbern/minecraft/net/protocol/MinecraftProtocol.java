@@ -4,6 +4,8 @@ import com.captainbern.minecraft.net.codec.Codec;
 import com.captainbern.minecraft.net.codec.CodecLookup;
 import com.captainbern.minecraft.net.codec.CodecRegistrationEntry;
 import com.captainbern.minecraft.net.exception.InvalidOpcodeException;
+import com.captainbern.minecraft.net.handler.Handler;
+import com.captainbern.minecraft.net.handler.HandlerLookup;
 import com.captainbern.minecraft.net.packet.Packet;
 import com.captainbern.minecraft.net.util.ByteBufUtils;
 import com.google.common.collect.Maps;
@@ -18,6 +20,7 @@ public abstract class MinecraftProtocol implements Protocol {
     private static final Logger LOGGER = LogManager.getLogger(MinecraftProtocol.class);
 
     private Map<Side, CodecLookup> codecRegistry = Maps.newConcurrentMap();
+    private Map<Side, HandlerLookup> handlerRegistry = Maps.newConcurrentMap();
 
     private final ProtocolState protocolState;
 
@@ -32,6 +35,25 @@ public abstract class MinecraftProtocol implements Protocol {
     @Override
     public String getId() {
         return this.getProtocolState().name().toLowerCase();
+    }
+
+    @Override
+    public <P extends Packet> Handler<?, P> getHandlerFor(Side side, Class<P> packetClass) {
+        return this.getHandlerLookupFor(side).getHandlerFor(packetClass);
+    }
+
+    @Override
+    public <P extends Packet, H extends Handler<?, P>> void registerHandler(Side side, Class<P> packetClass, Class<H> handlerClass) throws InstantiationException, IllegalAccessException {
+        this.getHandlerLookupFor(side).register(packetClass, handlerClass);
+    }
+
+    private HandlerLookup getHandlerLookupFor(Side side) {
+        HandlerLookup handlerLookup = this.handlerRegistry.get(side);
+
+        if (handlerLookup == null)
+            handlerLookup = this.handlerRegistry.put(side, new HandlerLookup());
+
+        return handlerLookup;
     }
 
     protected <P extends Packet, C extends Codec<P>> void registerClient(int opcode, Class<P> packet, Class<C> codec) {
