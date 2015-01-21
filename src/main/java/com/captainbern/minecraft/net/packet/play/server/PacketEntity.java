@@ -1,6 +1,6 @@
 package com.captainbern.minecraft.net.packet.play.server;
 
-import com.captainbern.litebot.net.packet.Packet;
+import com.captainbern.minecraft.net.packet.Packet;
 
 /**
  * Special packet: http://wiki.vg/Protocol#Entity

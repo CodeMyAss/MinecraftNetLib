@@ -1,7 +1,7 @@
 package com.captainbern.minecraft.net.codec.play.client;
 
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.client.PacketPlayerUpdatePositionAndLook;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.client.PacketPlayerUpdatePositionAndLook;
 import io.netty.buffer.ByteBuf;
 
 public class CodecPlayerUpdatePositionLook implements Codec<PacketPlayerUpdatePositionAndLook> {

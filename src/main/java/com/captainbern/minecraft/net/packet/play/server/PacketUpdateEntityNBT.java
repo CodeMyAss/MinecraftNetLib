@@ -1,7 +1,7 @@
 package com.captainbern.minecraft.net.packet.play.server;
 
-import com.captainbern.litebot.nbt.NbtTagCompound;
-import com.captainbern.litebot.net.packet.Packet;
+import com.captainbern.minecraft.game.nbt.NbtTagCompound;
+import com.captainbern.minecraft.net.packet.Packet;
 
 public class PacketUpdateEntityNBT implements Packet {
 

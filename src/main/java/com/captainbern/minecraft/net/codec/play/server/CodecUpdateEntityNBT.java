@@ -1,9 +1,9 @@
 package com.captainbern.minecraft.net.codec.play.server;
 
-import com.captainbern.litebot.nbt.NbtTagCompound;
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.server.PacketUpdateEntityNBT;
-import com.captainbern.litebot.net.utils.ByteBufUtils;
+import com.captainbern.minecraft.game.nbt.NbtTagCompound;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.server.PacketUpdateEntityNBT;
+import com.captainbern.minecraft.net.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 
 public class CodecUpdateEntityNBT implements Codec<PacketUpdateEntityNBT> {

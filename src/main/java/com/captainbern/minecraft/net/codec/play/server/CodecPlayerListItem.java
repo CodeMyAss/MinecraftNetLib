@@ -1,10 +1,10 @@
 package com.captainbern.minecraft.net.codec.play.server;
 
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.server.PacketPlayerListItem;
-import com.captainbern.litebot.net.packet.play.server.PacketPlayerListItem.PlayerListEntry;
-import com.captainbern.litebot.net.packet.play.server.PacketPlayerListItem.Property;
-import com.captainbern.litebot.net.utils.ByteBufUtils;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem;
+import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem.PlayerListEntry;
+import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem.Property;
+import com.captainbern.minecraft.net.util.ByteBufUtils;
 import com.captainbern.litebot.util.chat.Message;
 import io.netty.buffer.ByteBuf;
 

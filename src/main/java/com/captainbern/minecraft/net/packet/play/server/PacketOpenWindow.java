@@ -1,7 +1,7 @@
 package com.captainbern.minecraft.net.packet.play.server;
 
-import com.captainbern.litebot.net.packet.Packet;
-import com.captainbern.litebot.util.chat.Message;
+import com.captainbern.minecraft.net.packet.Packet;
+import com.captainbern.minecraft.game.chat.Message;
 
 public class PacketOpenWindow implements Packet {
 

@@ -1,6 +1,6 @@
 package com.captainbern.minecraft.net.packet.play.client;
 
-import com.captainbern.litebot.net.packet.AsyncablePacket;
+import com.captainbern.minecraft.net.packet.AsyncablePacket;
 
 public class PacketClientChatMessage implements AsyncablePacket {
 
@@ -15,7 +15,7 @@ public class PacketClientChatMessage implements AsyncablePacket {
     }
 
     @Override
-    public boolean isAsync() {
+    public boolean isAsynchronous() {
         return true;
     }
 }

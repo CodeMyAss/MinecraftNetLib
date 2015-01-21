@@ -1,8 +1,8 @@
 package com.captainbern.minecraft.net.codec.play.server;
 
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.server.PacketSpawnGlobalEntity;
-import com.captainbern.litebot.net.utils.ByteBufUtils;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.server.PacketSpawnGlobalEntity;
+import com.captainbern.minecraft.net.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 
 public class CodecSpawnGlobalEntity implements Codec<PacketSpawnGlobalEntity> {

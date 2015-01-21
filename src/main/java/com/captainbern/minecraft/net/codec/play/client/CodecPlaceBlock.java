@@ -1,10 +1,10 @@
 package com.captainbern.minecraft.net.codec.play.client;
 
-import com.captainbern.litebot.inventory.ItemStack;
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.client.PacketPlaceBlock;
-import com.captainbern.litebot.net.utils.ByteBufUtils;
-import com.captainbern.litebot.world.block.BlockVector;
+import com.captainbern.minecraft.game.ItemStack;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.client.PacketPlaceBlock;
+import com.captainbern.minecraft.net.util.ByteBufUtils;
+import com.captainbern.minecraft.game.BlockVector;
 import io.netty.buffer.ByteBuf;
 
 public class CodecPlaceBlock implements Codec<PacketPlaceBlock> {

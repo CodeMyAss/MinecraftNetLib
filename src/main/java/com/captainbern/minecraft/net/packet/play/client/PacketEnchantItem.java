@@ -1,6 +1,6 @@
 package com.captainbern.minecraft.net.packet.play.client;
 
-import com.captainbern.litebot.net.packet.Packet;
+import com.captainbern.minecraft.net.packet.Packet;
 
 public class PacketEnchantItem implements Packet {
 

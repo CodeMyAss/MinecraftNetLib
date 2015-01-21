@@ -1,7 +1,7 @@
 package com.captainbern.minecraft.net.codec.play.server;
 
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.server.PacketConfirmTransaction;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.server.PacketConfirmTransaction;
 import io.netty.buffer.ByteBuf;
 
 public class CodecConfirmTransaction implements Codec<PacketConfirmTransaction> {

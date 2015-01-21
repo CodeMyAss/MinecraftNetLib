@@ -1,10 +1,10 @@
 package com.captainbern.minecraft.net.codec.play.client;
 
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.client.PacketUpdateSign;
-import com.captainbern.litebot.net.utils.ByteBufUtils;
-import com.captainbern.litebot.util.chat.TextMessage;
-import com.captainbern.litebot.world.block.BlockVector;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.client.PacketUpdateSign;
+import com.captainbern.minecraft.net.util.ByteBufUtils;
+import com.captainbern.minecraft.game.chat.TextMessage;
+import com.captainbern.minecraft.game.BlockVector;
 import io.netty.buffer.ByteBuf;
 
 public class CodecUpdateSign implements Codec<PacketUpdateSign> {

@@ -1,9 +1,9 @@
 package com.captainbern.minecraft.net.codec.play.server;
 
-import com.captainbern.litebot.entity.metadata.Metadata;
-import com.captainbern.litebot.net.codec.Codec;
-import com.captainbern.litebot.net.packet.play.server.PacketSpawnPlayer;
-import com.captainbern.litebot.net.utils.ByteBufUtils;
+import com.captainbern.minecraft.game.entity.metadata.Metadata;
+import com.captainbern.minecraft.net.codec.Codec;
+import com.captainbern.minecraft.net.packet.play.server.PacketSpawnPlayer;
+import com.captainbern.minecraft.net.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 
 import java.util.List;
