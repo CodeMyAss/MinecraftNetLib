@@ -48,8 +48,6 @@ public abstract class NetworkClient implements ConnectionHandler {
 
     public void onConnectionFailed(Throwable cause) {}
 
-    public abstract void tick();
-
     public void shutdown() {
         this.workerGroup.shutdownGracefully();
     }
