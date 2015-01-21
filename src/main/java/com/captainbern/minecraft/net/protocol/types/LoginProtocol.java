@@ -16,7 +16,7 @@ import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
 import com.captainbern.minecraft.net.protocol.Side;
 
-public class LoginProtocol extends MinecraftProtocol {
+class LoginProtocol extends MinecraftProtocol {
 
     public LoginProtocol() {
         super(ProtocolState.LOGIN);

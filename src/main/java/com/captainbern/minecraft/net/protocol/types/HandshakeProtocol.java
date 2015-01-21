@@ -5,7 +5,7 @@ import com.captainbern.minecraft.net.packet.handshake.client.PacketHandshake;
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
 
-public class HandshakeProtocol extends MinecraftProtocol {
+class HandshakeProtocol extends MinecraftProtocol {
 
     public HandshakeProtocol() {
         super(ProtocolState.HANDSHAKE);

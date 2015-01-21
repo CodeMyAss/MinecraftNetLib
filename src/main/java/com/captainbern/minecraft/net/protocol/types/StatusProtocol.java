@@ -10,7 +10,7 @@ import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
 import com.captainbern.minecraft.net.protocol.Side;
 
-public class StatusProtocol extends MinecraftProtocol {
+class StatusProtocol extends MinecraftProtocol {
 
     public StatusProtocol() {
         super(ProtocolState.STATUS);

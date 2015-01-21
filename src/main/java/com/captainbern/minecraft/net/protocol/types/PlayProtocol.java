@@ -22,7 +22,7 @@ import com.captainbern.minecraft.net.packet.play.server.*;
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
 
-public class PlayProtocol extends MinecraftProtocol {
+class PlayProtocol extends MinecraftProtocol {
 
     public PlayProtocol() {
         super(ProtocolState.PLAY);
