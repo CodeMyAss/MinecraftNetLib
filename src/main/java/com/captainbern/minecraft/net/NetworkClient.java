@@ -1,6 +1,7 @@
 package com.captainbern.minecraft.net;
 
 import com.captainbern.minecraft.net.pipeline.MinecraftChannelInitializer;
+import com.captainbern.minecraft.net.protocol.Side;
 import com.captainbern.minecraft.net.session.Session;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -38,13 +39,14 @@ public abstract class NetworkClient implements ConnectionHandler {
         });
     }
 
-    public abstract void onConnectionSuccess();
+    @Override
+    public final Side getSide() {
+        return Side.CLIENT;
+    }
 
-    public abstract void onConnectionFailed(Throwable cause);
+    public void onConnectionSuccess() {}
 
-    public abstract Session newSession(Channel channel);
-
-    public abstract void onSessionInactivated(Session session);
+    public void onConnectionFailed(Throwable cause) {}
 
     public abstract void tick();
 

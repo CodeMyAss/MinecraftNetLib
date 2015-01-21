@@ -9,7 +9,7 @@ public interface Protocol {
 
     public String getId();
 
-    public <P extends Packet> CodecRegistrationEntry getCodecRegistration(Class<P> packetClass);
+    public <P extends Packet> CodecRegistrationEntry getCodecRegistration(Side side, Class<P> packetClass);
 
-    public Codec<?> readHeader(ByteBuf byteBuf);
+    public Codec<?> readHeader(Side side, ByteBuf byteBuf);
 }

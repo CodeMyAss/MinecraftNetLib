@@ -19,6 +19,10 @@ public class NetworkHandler extends SimpleChannelInboundHandler<Packet> {
         this.connectionHandler = connectionHandler;
     }
 
+    public ConnectionHandler getConnectionHandler() {
+        return this.connectionHandler;
+    }
+
     public Session getSession() {
         return this.session.get();
     }

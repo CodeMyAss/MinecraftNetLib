@@ -1,23 +1,21 @@
 package com.captainbern.minecraft.net.protocol.types;
 
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
-import com.captainbern.minecraft.net.protocol.Side;
-import com.captainbern.reflection.Reflection;
 
 public enum ProtocolType {
 
-    HANDSHAKE(HandshakeProtocol.class),
-    STATUS(StatusProtocol.class),
-    LOGIN(LoginProtocol.class),
-    PLAY(PlayProtocol.class);
+    HANDSHAKE(new HandshakeProtocol()),
+    STATUS(new StatusProtocol()),
+    LOGIN(new LoginProtocol()),
+    PLAY(new PlayProtocol());
 
-    private final Class<? extends MinecraftProtocol> protocolClass;
+    private final MinecraftProtocol minecraftProtocol;
 
-    private ProtocolType(Class<? extends MinecraftProtocol> protocolClass) {
-        this.protocolClass = protocolClass;
+    private ProtocolType(MinecraftProtocol minecraftProtocol) {
+        this.minecraftProtocol = minecraftProtocol;
     }
 
-    public MinecraftProtocol createFor(Side side) {
-        return new Reflection().reflect(protocolClass).newInstance(side);
+    public MinecraftProtocol getMinecraftProtocol() {
+        return this.minecraftProtocol;
     }
 }

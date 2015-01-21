@@ -6,8 +6,8 @@ import com.captainbern.minecraft.net.protocol.Side;
 
 public class PlayProtocol extends MinecraftProtocol {
 
-    public PlayProtocol(Side side) {
-        super(side, ProtocolState.PLAY);
+    public PlayProtocol() {
+        super(ProtocolState.PLAY);
 
         registerClient(0x0, PacketKeepAlive.class, CodecKeepAlive.class);
         registerClient(0x01, PacketClientChatMessage.class, CodecClientChatMessage.class);

@@ -4,6 +4,7 @@ import com.captainbern.minecraft.net.codec.Codec;
 import com.captainbern.minecraft.net.codec.CodecRegistrationEntry;
 import com.captainbern.minecraft.net.packet.Packet;
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
+import com.captainbern.minecraft.net.protocol.Side;
 import com.captainbern.minecraft.net.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -17,15 +18,17 @@ import java.util.List;
 public class CodecHandler extends MessageToMessageCodec<ByteBuf, Packet> {
 
     private final NetworkHandler networkHandler;
+    private final Side side;
 
     public CodecHandler(NetworkHandler networkHandler) {
         this.networkHandler = networkHandler;
+        this.side = this.networkHandler.getConnectionHandler().getSide();
     }
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Packet packet, List<Object> list) throws Exception {
         Class<? extends Packet> packetClass = packet.getClass();
-        CodecRegistrationEntry registrationEntry = this.networkHandler.getSession().getProtocol().getCodecRegistration(packetClass);
+        CodecRegistrationEntry registrationEntry = this.networkHandler.getSession().getProtocol().getCodecRegistration(this.side, packetClass);
 
         if (registrationEntry == null) {
             throw new EncoderException("Failed to find a CodecRegistrationEntry for packet: " + packetClass.getName());
@@ -42,7 +45,7 @@ public class CodecHandler extends MessageToMessageCodec<ByteBuf, Packet> {
 
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
-        Codec<?> codec = this.networkHandler.getSession().getProtocol().readHeader(byteBuf);
+        Codec<?> codec = this.networkHandler.getSession().getProtocol().readHeader(this.side.opposite(), byteBuf);
         Packet decoded = codec.decode(byteBuf);
 
         if (byteBuf.readableBytes() > 0) {

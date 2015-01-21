@@ -2,6 +2,7 @@ package com.captainbern.minecraft.net.pipeline;
 
 import com.captainbern.minecraft.net.ConnectionHandler;
 import com.captainbern.minecraft.net.NetworkClient;
+import com.captainbern.minecraft.net.protocol.Side;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.handler.timeout.ReadTimeoutHandler;
@@ -18,19 +19,6 @@ public class MinecraftChannelInitializer extends ChannelInitializer<Channel> {
 
     @Override
     protected void initChannel(Channel channel) throws Exception {
-        /*
-          Pipeline:
-            read time out
-            encryption
-            framing
-            compression
-            codec
-            nethandler
-
-          When compression or framing is needed, the NoOpHandler will be replaced by
-          a CompressionHandler or a FramingHandler
-        */
-
         NetworkHandler networkHandler = new NetworkHandler(this.connectionHandler);
 
         channel.pipeline()

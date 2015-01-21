@@ -18,8 +18,8 @@ import com.captainbern.minecraft.net.protocol.Side;
 
 public class LoginProtocol extends MinecraftProtocol {
 
-    public LoginProtocol(Side side) {
-        super(side, ProtocolState.LOGIN);
+    public LoginProtocol() {
+        super(ProtocolState.LOGIN);
 
         registerClient(0x0, PacketLoginRequest.class, CodecLoginRequest.class);
         registerClient(0x01, PacketEncryptionResponse.class, CodecEncryptionResponse.class);

@@ -18,7 +18,7 @@ public class CodecLookup {
     public CodecLookup() {
     }
 
-    public <P extends Packet, C extends Codec<? super P>> CodecRegistrationEntry register(Class<P> packet, Class<C> codecClass, int opcode) {
+    public <P extends Packet, C extends Codec<? super P>> CodecRegistrationEntry register(int opcode, Class<P> packet, Class<C> codecClass) {
         CodecRegistrationEntry codecRegistration = this.REGISTRATION.get(packet);
 
         if (codecRegistration != null) {
