@@ -1,11 +1,11 @@
 package com.captainbern.minecraft.net.codec.play.server;
 
+import com.captainbern.minecraft.game.chat.Message;
 import com.captainbern.minecraft.net.codec.Codec;
 import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem;
 import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem.PlayerListEntry;
 import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem.Property;
 import com.captainbern.minecraft.net.util.ByteBufUtils;
-import com.captainbern.minecraft.game.chat.Message;
 import io.netty.buffer.ByteBuf;
 
 import java.util.UUID;

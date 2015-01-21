@@ -4,7 +4,6 @@ import com.captainbern.minecraft.net.ConnectionHandler;
 import com.captainbern.minecraft.net.handler.Handler;
 import com.captainbern.minecraft.net.packet.Packet;
 import com.captainbern.minecraft.net.protocol.Protocol;
-import com.captainbern.minecraft.net.protocol.Side;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelException;
 import io.netty.channel.ChannelFuture;

@@ -2,9 +2,7 @@ package com.captainbern.minecraft.net;
 
 import com.captainbern.minecraft.net.pipeline.MinecraftChannelInitializer;
 import com.captainbern.minecraft.net.protocol.Side;
-import com.captainbern.minecraft.net.session.Session;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;

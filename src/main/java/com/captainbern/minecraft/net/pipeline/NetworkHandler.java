@@ -1,7 +1,6 @@
 package com.captainbern.minecraft.net.pipeline;
 
 import com.captainbern.minecraft.net.ConnectionHandler;
-import com.captainbern.minecraft.net.NetworkClient;
 import com.captainbern.minecraft.net.packet.Packet;
 import com.captainbern.minecraft.net.session.Session;
 import io.netty.channel.Channel;

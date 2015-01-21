@@ -8,7 +8,6 @@ import com.captainbern.minecraft.net.packet.status.client.PacketStatusRequest;
 import com.captainbern.minecraft.net.packet.status.server.PacketStatusResponse;
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
-import com.captainbern.minecraft.net.protocol.Side;
 
 class StatusProtocol extends MinecraftProtocol {
 

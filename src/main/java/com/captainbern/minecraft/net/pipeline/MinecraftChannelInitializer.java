@@ -1,8 +1,6 @@
 package com.captainbern.minecraft.net.pipeline;
 
 import com.captainbern.minecraft.net.ConnectionHandler;
-import com.captainbern.minecraft.net.NetworkClient;
-import com.captainbern.minecraft.net.protocol.Side;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.handler.timeout.ReadTimeoutHandler;

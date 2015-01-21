@@ -14,7 +14,6 @@ import com.captainbern.minecraft.net.packet.login.server.PacketLoginResponse;
 import com.captainbern.minecraft.net.packet.login.server.PacketLoginSetCompression;
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
-import com.captainbern.minecraft.net.protocol.Side;
 
 class LoginProtocol extends MinecraftProtocol {
 
