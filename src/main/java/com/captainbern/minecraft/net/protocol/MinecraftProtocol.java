@@ -83,4 +83,10 @@ public abstract class MinecraftProtocol implements Protocol {
     public static Logger getLogger() {
         return LOGGER;
     }
+
+    // TODO: This should be improved.
+    // Perhaps provide a Protocol for multiple versions?
+    public static int getProtocolVersion() {
+        return 47;
+    }
 }
