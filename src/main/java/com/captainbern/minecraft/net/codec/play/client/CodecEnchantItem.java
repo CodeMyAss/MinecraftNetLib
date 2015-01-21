@@ -8,11 +8,17 @@ public class CodecEnchantItem implements Codec<PacketEnchantItem> {
 
     @Override
     public ByteBuf encode(ByteBuf byteBuf, PacketEnchantItem packet) {
-        return null;
+        byteBuf.writeByte(packet.getWindowId());
+        byteBuf.writeByte(packet.getEnchantment());
+
+        return byteBuf;
     }
 
     @Override
     public PacketEnchantItem decode(ByteBuf byteBuf) {
-        return null;
+        byte windowId = byteBuf.readByte();
+        byte enchantment = byteBuf.readByte();
+
+        return new PacketEnchantItem(windowId, enchantment);
     }
 }
