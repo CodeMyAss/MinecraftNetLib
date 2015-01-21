@@ -18,9 +18,7 @@ public abstract class BasicSession implements Session {
         this.protocol = protocol;
     }
 
-    public void handlePacket(Packet packet) {
-        // TODO: Handle packet
-    }
+    public abstract void handlePacket(Packet packet);
 
     @Override
     public void packetReceived(Packet packet) {
