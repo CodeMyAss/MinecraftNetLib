@@ -50,8 +50,10 @@ public abstract class MinecraftProtocol implements Protocol {
     private HandlerLookup getHandlerLookupFor(Side side) {
         HandlerLookup handlerLookup = this.handlerRegistry.get(side);
 
-        if (handlerLookup == null)
-            handlerLookup = this.handlerRegistry.put(side, new HandlerLookup());
+        if (handlerLookup == null) {
+            handlerLookup = new HandlerLookup();
+            this.handlerRegistry.put(side, handlerLookup);
+        }
 
         return handlerLookup;
     }
@@ -65,21 +67,23 @@ public abstract class MinecraftProtocol implements Protocol {
     }
 
     protected <P extends Packet, C extends Codec<P>> void register(Side side, int opcode, Class<P> packet, Class<C> codec) {
-        this.getLookupFor(side).register(opcode, packet, codec);
+        this.getCodecLookupFor(side).register(opcode, packet, codec);
     }
 
-    private CodecLookup getLookupFor(Side side) {
+    private CodecLookup getCodecLookupFor(Side side) {
         CodecLookup lookup = this.codecRegistry.get(side);
 
-        if (lookup == null)
-            lookup = this.codecRegistry.put(side, new CodecLookup());
+        if (lookup == null) {
+            lookup = new CodecLookup();
+            this.codecRegistry.put(side, lookup);
+        }
 
         return lookup;
     }
 
     @Override
     public <P extends Packet> CodecRegistrationEntry getCodecRegistration(Side side, Class<P> packetClass) {
-        CodecRegistrationEntry registrationEntry = this.getLookupFor(side).getCodecFor(packetClass);
+        CodecRegistrationEntry registrationEntry = this.getCodecLookupFor(side).getCodecFor(packetClass);
 
         if (registrationEntry == null) {
             getLogger().warn("Failed to find a CodecRegistrationEntry for packet: \'" + packetClass.getName() + "\'");
@@ -94,7 +98,7 @@ public abstract class MinecraftProtocol implements Protocol {
         Codec<?> codec = null;
 
         try {
-            codec = this.getLookupFor(side).getCodecFor(opcode);
+            codec = this.getCodecLookupFor(side).getCodecFor(opcode);
         } catch (InvalidOpcodeException e) {
             getLogger().warn("Failed to find an inbound packet for opcode: " + opcode);
         }
