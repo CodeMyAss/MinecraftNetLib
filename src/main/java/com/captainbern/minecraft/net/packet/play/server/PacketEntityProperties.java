@@ -1,6 +1,6 @@
 package com.captainbern.minecraft.net.packet.play.server;
 
-import com.captainbern.litebot.entity.attribute.Attribute;
+import com.captainbern.minecraft.game.entity.attribute.Attribute;
 import com.captainbern.minecraft.net.packet.Packet;
 
 import java.util.List;

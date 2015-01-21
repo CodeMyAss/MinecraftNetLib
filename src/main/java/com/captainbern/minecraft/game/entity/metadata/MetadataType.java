@@ -1,8 +1,8 @@
 package com.captainbern.minecraft.game.entity.metadata;
 
-import com.captainbern.litebot.game.Position;
-import com.captainbern.litebot.game.Rotation;
-import com.captainbern.litebot.inventory.ItemStack;
+import com.captainbern.minecraft.game.ItemStack;
+import com.captainbern.minecraft.game.Position;
+import com.captainbern.minecraft.game.Rotation;
 import com.google.common.collect.Maps;
 import com.google.common.primitives.Primitives;
 

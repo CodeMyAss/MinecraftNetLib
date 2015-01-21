@@ -5,7 +5,7 @@ import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem;
 import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem.PlayerListEntry;
 import com.captainbern.minecraft.net.packet.play.server.PacketPlayerListItem.Property;
 import com.captainbern.minecraft.net.util.ByteBufUtils;
-import com.captainbern.litebot.util.chat.Message;
+import com.captainbern.minecraft.game.chat.Message;
 import io.netty.buffer.ByteBuf;
 
 import java.util.UUID;
