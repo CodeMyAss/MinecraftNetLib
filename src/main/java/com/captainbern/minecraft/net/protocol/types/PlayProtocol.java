@@ -11,6 +11,7 @@ import com.captainbern.minecraft.net.codec.play.client.CodecUpdateSign;
 import com.captainbern.minecraft.net.codec.play.server.*;
 import com.captainbern.minecraft.net.packet.play.client.*;
 import com.captainbern.minecraft.net.packet.play.client.PacketCloseWindow;
+import com.captainbern.minecraft.net.packet.play.client.PacketConfirmTransaction;
 import com.captainbern.minecraft.net.packet.play.client.PacketHeldItemChange;
 import com.captainbern.minecraft.net.packet.play.client.PacketKeepAlive;
 import com.captainbern.minecraft.net.packet.play.client.PacketPlayerAbilities;
@@ -20,7 +21,6 @@ import com.captainbern.minecraft.net.packet.play.client.PacketUpdateSign;
 import com.captainbern.minecraft.net.packet.play.server.*;
 import com.captainbern.minecraft.net.protocol.MinecraftProtocol;
 import com.captainbern.minecraft.net.protocol.ProtocolState;
-import com.captainbern.minecraft.net.protocol.Side;
 
 public class PlayProtocol extends MinecraftProtocol {
 
@@ -42,7 +42,7 @@ public class PlayProtocol extends MinecraftProtocol {
         registerClient(0x0c, PacketSteerVehicle.class, CodecSteerVehicle.class);
         registerClient(0x0d, PacketCloseWindow.class, CodecCloseWindow.class);
         registerClient(0x0e, PacketClickWindow.class, CodecClickWindow.class);
-        registerClient(0x0f, PacketConfirmTransation.class, CodecConfirmTransation.class);
+        registerClient(0x0f, PacketConfirmTransaction.class, CodecConfirmTransation.class);
         registerClient(0x10, PacketCreativeInventoryAction.class, CodecCreativeInventoryAction.class);
         registerClient(0x11, PacketEnchantItem.class, CodecEnchantItem.class);
         registerClient(0x12, PacketUpdateSign.class, CodecUpdateSign.class);
