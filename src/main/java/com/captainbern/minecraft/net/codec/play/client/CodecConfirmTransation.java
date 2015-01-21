@@ -1,13 +1,13 @@
 package com.captainbern.minecraft.net.codec.play.client;
 
 import com.captainbern.minecraft.net.codec.Codec;
-import com.captainbern.minecraft.net.packet.play.client.PacketConfirmTransation;
+import com.captainbern.minecraft.net.packet.play.client.PacketConfirmTransaction;
 import io.netty.buffer.ByteBuf;
 
-public class CodecConfirmTransation implements Codec<PacketConfirmTransation> {
+public class CodecConfirmTransation implements Codec<PacketConfirmTransaction> {
 
     @Override
-    public ByteBuf encode(ByteBuf byteBuf, PacketConfirmTransation packet) {
+    public ByteBuf encode(ByteBuf byteBuf, PacketConfirmTransaction packet) {
         byteBuf.writeByte(packet.getWindowId());
         byteBuf.writeShort(packet.getAction());
         byteBuf.writeBoolean(packet.isAccepted());
@@ -16,11 +16,11 @@ public class CodecConfirmTransation implements Codec<PacketConfirmTransation> {
     }
 
     @Override
-    public PacketConfirmTransation decode(ByteBuf byteBuf) {
+    public PacketConfirmTransaction decode(ByteBuf byteBuf) {
         byte windowId = byteBuf.readByte();
         short action = byteBuf.readShort();
         boolean accepted = byteBuf.readBoolean();
 
-        return new PacketConfirmTransation(windowId, action, accepted);
+        return new PacketConfirmTransaction(windowId, action, accepted);
     }
 }
