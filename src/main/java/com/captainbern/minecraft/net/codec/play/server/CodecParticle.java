@@ -18,7 +18,9 @@ public class CodecParticle implements Codec<PacketParticle> {
         byteBuf.writeFloat(packet.getOffsetZ());
         byteBuf.writeFloat(packet.getParticleData());
         ByteBufUtils.writeVarInt(byteBuf, packet.getParticleCount());
-        //TODO: WHEN WE KNOW THE BLOODY VARIABLE LENGTH PACKETS, WE HANDLE THEM HERE
+        for (int i = 0; i < PacketParticle.ParticleType.getById(packet.getParticleType()).getLength(); i++) {
+            ByteBufUtils.writeVarInt(byteBuf, packet.getData()[i]);
+        }
         
         return byteBuf;
     }
@@ -34,8 +36,10 @@ public class CodecParticle implements Codec<PacketParticle> {
         float offsetZ = byteBuf.readFloat();
         float particleData = byteBuf.readFloat();
         int particleCount = ByteBufUtils.readVarInt(byteBuf);
-        int data[] = null;
-        //TODO: HANDLE THE BLOODY DATA
+        int data[] = new int[PacketParticle.ParticleType.getById(particleType).getLength()];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = ByteBufUtils.readVarInt(byteBuf);
+        }
         
         return new PacketParticle(particleType, longDistance, x, y, z, offsetX, offsetY, offsetZ, particleData, particleCount, data);
     }

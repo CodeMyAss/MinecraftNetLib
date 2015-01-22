@@ -49,7 +49,7 @@ public class CodecHandler extends MessageToMessageCodec<ByteBuf, Packet> {
         Packet decoded = codec.decode(byteBuf);
 
         if (byteBuf.readableBytes() > 0) {
-            MinecraftProtocol.getLogger().warn("Leftover bytes (" + byteBuf.readableBytes() + ") after decoding: " + decoded);
+            MinecraftProtocol.getLogger().warn("Leftover bytes (" + byteBuf.readableBytes() + ") after decoding: \'" + decoded + "\'. (Protocol: \'" + this.networkHandler.getSession().getProtocol().getId() + "\')");
         }
 
         list.add(decoded);

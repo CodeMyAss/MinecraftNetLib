@@ -42,23 +42,40 @@ public class PacketParticle implements Packet {
         SNOW_SHOVEL( 32),
         SLIME(33),
         HEART(34),
-        BARRIER(35);
+        BARRIER(35),
+        ITEM_CRACK(36, 2),
+        BLOCK_CRACK(37, 1),
+        BLOCK_DUST(38, 1),
+        WATER_DROP(39),
+        ITEM_TAKE(40),
+        MOB_APPEARANCE(41);
 
         private final int id;
+        private final int length;
 
         private static final Map<Integer, ParticleType> BY_ID = Maps.newHashMap();
         static {
             for (ParticleType particleType : ParticleType.values()) {
+                if (particleType != ParticleType.ITEM_CRACK && particleType != ParticleType.BLOCK_CRACK && particleType != ParticleType.BLOCK_DUST)
                 BY_ID.put(particleType.getId(), particleType);
             }
         }
 
         private ParticleType(int id) {
+            this(id, 0);
+        }
+
+        private ParticleType(int id, int length) {
             this.id = id;
+            this.length = length;
         }
 
         public int getId() {
             return this.id;
+        }
+
+        public int getLength() {
+            return this.length;
         }
 
         public static ParticleType getById(int id) {
