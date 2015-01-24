@@ -25,7 +25,7 @@ public abstract class Message {
         stringBuilder.append(this.getText());
 
         for (Message extra : this.extraMessages) {
-            stringBuilder.append(extra.getText());
+            stringBuilder.append(extra.getFullText());
         }
 
         return stringBuilder.toString();
