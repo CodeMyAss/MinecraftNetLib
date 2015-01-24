@@ -10,6 +10,8 @@ import io.netty.channel.ChannelFuture;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
+import java.util.List;
+
 public abstract class BasicSession implements Session {
 
     protected final ConnectionHandler connectionHandler;
@@ -24,10 +26,14 @@ public abstract class BasicSession implements Session {
 
     public void handlePacket(Packet packet) {
         Class<? extends Packet> packetClass = packet.getClass();
-        Handler handler = this.protocol.getHandlerFor(this.connectionHandler.getSide().opposite(), packetClass);
+        Object handlersObject = this.protocol.getHandlersFor(packetClass);
 
-        if (handler != null)
-            handler.handle(this, packet);
+        if (handlersObject != null) {
+            List<Handler> handlers = ((List<Handler>) handlersObject); // Have to do this ugly hack because of type-safety. TODO: find a better way to do this
+            for (Handler handler : handlers) {
+                handler.handle(this, packet);
+            }
+        }
     }
 
     @Override

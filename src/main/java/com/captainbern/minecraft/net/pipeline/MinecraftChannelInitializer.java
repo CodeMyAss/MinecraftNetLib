@@ -21,9 +21,9 @@ public class MinecraftChannelInitializer extends ChannelInitializer<Channel> {
 
         channel.pipeline()
                 .addLast("read_timeout", new ReadTimeoutHandler(30, TimeUnit.SECONDS))
-                .addLast("encryption_handler", new NoOpHandler())
+                .addLast("encryption_handler", NoOpHandler.INSTANCE)
                 .addLast("framing_handler", new FramingHandler())
-                .addLast("compression_handler", new NoOpHandler())
+                .addLast("compression_handler", NoOpHandler.INSTANCE)
                 .addLast("codec_handler", new CodecHandler(networkHandler))
                 .addLast("net_manager", networkHandler);
     }

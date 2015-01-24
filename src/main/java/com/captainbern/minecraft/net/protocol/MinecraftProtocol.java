@@ -13,6 +13,7 @@ import io.netty.buffer.ByteBuf;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
 import java.util.Map;
 
 public abstract class MinecraftProtocol implements Protocol {
@@ -20,11 +21,12 @@ public abstract class MinecraftProtocol implements Protocol {
     private static final Logger LOGGER = LogManager.getLogger(MinecraftProtocol.class);
 
     private Map<Side, CodecLookup> codecRegistry = Maps.newConcurrentMap();
-    private Map<Side, HandlerLookup> handlerRegistry = Maps.newConcurrentMap();
+    private HandlerLookup handlerLookup;
 
     private final ProtocolState protocolState;
 
     public MinecraftProtocol(ProtocolState protocolState) {
+        this.handlerLookup = new HandlerLookup(this);
         this.protocolState = protocolState;
     }
 
@@ -38,24 +40,18 @@ public abstract class MinecraftProtocol implements Protocol {
     }
 
     @Override
-    public <P extends Packet> Handler<?, P> getHandlerFor(Side side, Class<P> packetClass) {
-        return this.getHandlerLookupFor(side).getHandlerFor(packetClass);
+    public <P extends Packet> List<Handler<?, P>> getHandlersFor(Class<P> packetClass) {
+        return this.handlerLookup.getHandlers(packetClass);
     }
 
     @Override
-    public <P extends Packet, H extends Handler<?, P>> void registerHandler(Side side, Class<P> packetClass, Class<H> handlerClass) throws InstantiationException, IllegalAccessException {
-        this.getHandlerLookupFor(side).register(packetClass, handlerClass);
+    public void registerHandlers(String packageName) {
+        this.handlerLookup.registerHandlers(packageName);
     }
 
-    private HandlerLookup getHandlerLookupFor(Side side) {
-        HandlerLookup handlerLookup = this.handlerRegistry.get(side);
-
-        if (handlerLookup == null) {
-            handlerLookup = new HandlerLookup();
-            this.handlerRegistry.put(side, handlerLookup);
-        }
-
-        return handlerLookup;
+    @Override
+    public <P extends Packet, H extends Handler<?, P>> void registerHandler(Class<H> handlerClass) {
+        this.handlerLookup.registerHandler(handlerClass);
     }
 
     protected <P extends Packet, C extends Codec<P>> void registerClient(int opcode, Class<P> packet, Class<C> codec) {
