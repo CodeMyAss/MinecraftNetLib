@@ -12,7 +12,7 @@ public interface Protocol {
 
     public String getId();
 
-    public <P extends Packet> List<Handler<?, P>> getHandlersFor(Class<P> packetClass);
+    public <P extends Packet> Handler<?, P> getHandlerFor(Class<P> packetClass);
 
     public void registerHandlers(String packageName);
 

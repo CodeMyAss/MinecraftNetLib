@@ -26,13 +26,10 @@ public abstract class BasicSession implements Session {
 
     public void handlePacket(Packet packet) {
         Class<? extends Packet> packetClass = packet.getClass();
-        Object handlersObject = this.protocol.getHandlersFor(packetClass);
+        Handler handler = this.protocol.getHandlerFor(packetClass);
 
-        if (handlersObject != null) {
-            List<Handler> handlers = ((List<Handler>) handlersObject); // Have to do this ugly hack because of type-safety. TODO: find a better way to do this
-            for (Handler handler : handlers) {
-                handler.handle(this, packet);
-            }
+        if (handler != null) {
+            handler.handle(this, packet);
         }
     }
 

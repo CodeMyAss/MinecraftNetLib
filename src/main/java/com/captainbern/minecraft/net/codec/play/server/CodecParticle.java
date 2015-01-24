@@ -8,7 +8,7 @@ import io.netty.buffer.ByteBuf;
 public class CodecParticle implements Codec<PacketParticle> {
 
     public ByteBuf encode(ByteBuf byteBuf, PacketParticle packet) {
-        ByteBufUtils.writeVarInt(byteBuf, packet.getParticleType());
+        byteBuf.writeInt(packet.getParticleType());
         byteBuf.writeBoolean(packet.isLongDistance());
         byteBuf.writeFloat(packet.getX());
         byteBuf.writeFloat(packet.getY());
@@ -17,8 +17,8 @@ public class CodecParticle implements Codec<PacketParticle> {
         byteBuf.writeFloat(packet.getOffsetY());
         byteBuf.writeFloat(packet.getOffsetZ());
         byteBuf.writeFloat(packet.getParticleData());
-        ByteBufUtils.writeVarInt(byteBuf, packet.getParticleCount());
-        for (int i = 0; i < PacketParticle.ParticleType.getById(packet.getParticleType()).getLength(); i++) {
+        byteBuf.writeInt(packet.getParticleCount());
+        for (int i = 0; i < packet.getData().length; i++) {
             ByteBufUtils.writeVarInt(byteBuf, packet.getData()[i]);
         }
         
@@ -26,7 +26,7 @@ public class CodecParticle implements Codec<PacketParticle> {
     }
 
     public PacketParticle decode(ByteBuf byteBuf) {
-        int particleType = ByteBufUtils.readVarInt(byteBuf);
+        int particleType = byteBuf.readInt();
         boolean longDistance = byteBuf.readBoolean();
         float x = byteBuf.readFloat();
         float y = byteBuf.readFloat();
@@ -35,7 +35,7 @@ public class CodecParticle implements Codec<PacketParticle> {
         float offsetY = byteBuf.readFloat();
         float offsetZ = byteBuf.readFloat();
         float particleData = byteBuf.readFloat();
-        int particleCount = ByteBufUtils.readVarInt(byteBuf);
+        int particleCount = byteBuf.readInt();
         int data[] = new int[PacketParticle.ParticleType.getById(particleType).getLength()];
         for (int i = 0; i < data.length; i++) {
             data[i] = ByteBufUtils.readVarInt(byteBuf);

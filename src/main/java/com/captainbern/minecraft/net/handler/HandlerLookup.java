@@ -9,27 +9,23 @@ import com.google.common.reflect.ClassPath;
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class HandlerLookup {
 
-    private final Map<Class<? extends Packet>, List<Handler>> registry = Maps.newConcurrentMap();
+    private final Map<Class<? extends Packet>, Handler> registry = Maps.newConcurrentMap();
     private final Protocol protocol;
 
     public HandlerLookup(Protocol protocol) {
         this.protocol = protocol;
     }
 
-    public <P extends Packet> List<Handler<?, P>> getHandlers(Class<P> packetType) {
+    public <P extends Packet> Handler<?, P> getHandler(Class<P> packetType) {
         if (this.registry.get(packetType) == null)
             return null;
 
-        List<Handler> handlers = this.registry.get(packetType);
-
-        return (((List<Handler<?, P>>) (Object) handlers)); // ugly way -> TODO: make this better
+        return this.registry.get(packetType);
     }
 
     public void registerHandlers(String packageName) {
@@ -75,11 +71,9 @@ public class HandlerLookup {
         if (annotationPacketType != genericPacketType)
             throw new IllegalArgumentException("PacketType defined in @PacketHandler does not match the generic defined PacketType for handler: \'" + handlerClass.getName() + "\'");
 
-        List<Handler> handlers = this.registry.get(annotationPacketType);
-        if (handlers == null)
-            handlers = new ArrayList<>();
+        if (this.registry.get(annotationPacketType) != null)
+            MinecraftProtocol.getLogger().warn("Overriding a handler for: \'" + annotationPacketType.getName() + "\'");
 
-        handlers.add(handler);
-        this.registry.put(annotationPacketType, handlers);
+        this.registry.put(annotationPacketType, handler);
     }
 }

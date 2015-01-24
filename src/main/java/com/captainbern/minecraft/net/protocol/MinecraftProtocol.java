@@ -40,8 +40,8 @@ public abstract class MinecraftProtocol implements Protocol {
     }
 
     @Override
-    public <P extends Packet> List<Handler<?, P>> getHandlersFor(Class<P> packetClass) {
-        return this.handlerLookup.getHandlers(packetClass);
+    public <P extends Packet> Handler<?, P> getHandlerFor(Class<P> packetClass) {
+        return this.handlerLookup.getHandler(packetClass);
     }
 
     @Override
