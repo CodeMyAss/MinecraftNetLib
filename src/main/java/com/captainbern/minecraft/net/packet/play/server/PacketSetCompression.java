@@ -1,8 +1,8 @@
 package com.captainbern.minecraft.net.packet.play.server;
 
-import com.captainbern.minecraft.net.packet.Packet;
+import com.captainbern.minecraft.net.packet.AsyncablePacket;
 
-public class PacketSetCompression implements Packet {
+public class PacketSetCompression implements AsyncablePacket {
 
     private int threshold;
 
@@ -12,5 +12,10 @@ public class PacketSetCompression implements Packet {
 
     public int getThreshold() {
         return this.threshold;
+    }
+
+    @Override
+    public boolean isAsynchronous() {
+        return true;
     }
 }

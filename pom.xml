@@ -58,13 +58,6 @@
             <version>2.0-beta9</version>
         </dependency>
 
-        <!-- JCommander -->
-        <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>1.35</version>
-        </dependency>
-
         <!-- My Reflection Framework -->
         <dependency>
             <groupId>com.captainbern</groupId>
@@ -184,7 +177,6 @@
                                     <artifact>org.apache.commons.io:commons-lang3</artifact>
                                     <artifact>org.apache.logging.log4j:log4j-api</artifact>
                                     <artifact>org.apache.logging.log4j:log4j-core</artifact>
-                                    <artifact>com.beust:jcommander</artifact>
                                     <artifact>com.captainbern:Reflection</artifact>
                                     <artifact>com.mojang:authlib</artifact>
                                 </includes>
