@@ -20,6 +20,17 @@ public abstract class Message {
 
     public abstract String getText();
 
+    public String getFullText() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.getText());
+
+        for (Message extra : this.extraMessages) {
+            stringBuilder.append(extra.getText());
+        }
+
+        return stringBuilder.toString();
+    }
+
     public ChatColor getChatColor() {
         return this.chatColor;
     }

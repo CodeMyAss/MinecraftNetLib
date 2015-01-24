@@ -15,7 +15,7 @@ public class ScoreMessage extends Message {
 
     @Override
     public String getText() {
-        return this.playerName + " - " + this.objectiveName;
+        return this.objectiveName + ": " + this.playerName;
     }
 
     @Override
