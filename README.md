@@ -1,3 +1,3 @@
 # MinecraftNetLib
 
-A Minecraf Networking Library
+A Minecraft Networking Library
